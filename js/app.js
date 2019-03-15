@@ -15,6 +15,10 @@ class UI {
       this.itemList = [];
       this.itemID = 0;
     }
+    //submit budget method
+    submitBudgetForm() {
+        console.log('hello from esg');
+    }
   }
 
   function eventListeners() {
@@ -27,19 +31,19 @@ class UI {
 
     //budget form submit
     budgetForm.addEventListener('submit', function(event){
-
+        event.preventDefault();
+        ui.submitBudgetForm();
     });
 
     //budget form submit
     expenseForm.addEventListener('submit', function(event){
+        event.preventDefault();
 
     });
 
 
     // expense click
-    expenseList.addEventListener('clic', function(event){
-
-    });
+    expenseList.addEventListener('clic', function(){});
   }
 
   document.addEventListener('DOMContentLoaded', function() {
