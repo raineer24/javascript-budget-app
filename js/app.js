@@ -23,6 +23,23 @@ class UI {
     const expenseList = document.getElementById('expense-list');
 
     // mew instance of  UI CLASS
+    const ui = new UI()
+
+    //budget form submit
+    budgetForm.addEventListener('submit', function(event){
+
+    });
+
+    //budget form submit
+    expenseForm.addEventListener('submit', function(event){
+
+    });
+
+
+    // expense click
+    expenseList.addEventListener('clic', function(event){
+
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function() {
