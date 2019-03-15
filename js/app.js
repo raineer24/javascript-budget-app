@@ -20,7 +20,15 @@ class UI {
         const value = this.budgetInput.value;
         if(value === "" || value < 0) {
             this.budgetFeedback.classList.add('showItem');
-            this.budgetFeedback.innerHTML = `<p>value cannot be empty or negative</p>`
+            this.budgetFeedback.innerHTML = `<p>value cannot be empty or negative</p>`;
+            const self = this;
+            console.log(this);
+            setTimeout(function() {
+               
+                console.log(this);
+                console.log(self);
+                 self.budgetFeedback.classList.remove("showItem");
+            }, 4000);
         } 
     }
   }
