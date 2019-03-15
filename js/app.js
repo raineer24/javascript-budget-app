@@ -22,14 +22,19 @@ class UI {
             this.budgetFeedback.classList.add('showItem');
             this.budgetFeedback.innerHTML = `<p>value cannot be empty or negative</p>`;
             const self = this;
-            console.log(this);
+            //console.log(this);
             setTimeout(function() {
-               
-                console.log(this);
-                console.log(self);
-                 self.budgetFeedback.classList.remove("showItem");
+               self.budgetFeedback.classList.remove("showItem");
             }, 4000);
-        } 
+        } else {
+            this.budgetAmount.textContent = value;
+            this.budgetInput.value = "";
+            this.showBalance();
+        }
+    }
+    //show Balance
+    showBalance(){
+        console.log(`hey I'm getting a hold of 'this' keyword`);
     }
   }
 
