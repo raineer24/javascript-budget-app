@@ -1,4 +1,4 @@
-# CRUD API STICKERS Tutorial
+# JAVASCRIPT: BUDGET APP
 
 ## Setup
 
