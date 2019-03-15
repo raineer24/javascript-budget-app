@@ -17,7 +17,11 @@ class UI {
     }
     //submit budget method
     submitBudgetForm() {
-        console.log('hello from esg');
+        const value = this.budgetInput.value;
+        if(value === "" || value < 0) {
+            this.budgetFeedback.classList.add('showItem');
+            this.budgetFeedback.innerHTML = `<p>value cannot be empty or negative</p>`
+        } 
     }
   }
 
@@ -33,6 +37,7 @@ class UI {
     budgetForm.addEventListener('submit', function(event){
         event.preventDefault();
         ui.submitBudgetForm();
+        
     });
 
     //budget form submit
