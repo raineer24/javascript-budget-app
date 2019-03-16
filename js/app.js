@@ -72,9 +72,10 @@ class UI {
         
     });
 
-    //budget form submit
+    //expense form submit
     expenseForm.addEventListener('submit', function(event){
         event.preventDefault();
+        ui.submitExpenseForm(); 
 
     });
 
