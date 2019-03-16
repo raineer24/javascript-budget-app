@@ -29,16 +29,31 @@ class UI {
         } else {
             this.budgetAmount.textContent = value;
             this.budgetInput.value = "";
+            console.log(this.budgetAmount.textContent);
             this.showBalance();
         }
     }
     //show Balance
     showBalance(){
         const expense = this.totalExpense();
+        const total = parseInt(this.budgetAmount.textContent) - expense;
+        this.balanceAmount.textContent = total;
+        if (total < 0) {
+            this.balance.classList.remove("showGreen", "showBlack");
+            this.balance.classList.add("showRed");
+        } else if (total > 0) {
+            this.balance.classList.remove("showRed", "showBlack");
+            this.balance.classList.add("showGreen");
+        } else if (total === 0) {
+            this.balance.classList.remove("showRed", "showGreen");
+            this.balance.classList.add("showRed");
+        }
     }
     // total expense
     totalExpense() {
-        
+        let total = 400;
+        return total;
+        console.log('bogo ka');
     }
   }
 
@@ -65,7 +80,7 @@ class UI {
 
 
     // expense click
-    expenseList.addEventListener('clic', function(){});
+    expenseList.addEventListener('click', function(){});
   }
 
   document.addEventListener('DOMContentLoaded', function() {
