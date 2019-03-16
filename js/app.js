@@ -54,6 +54,7 @@ class UI {
     submitExpenseForm() {
         const expenseValue = this.expenseInput.value;
         const amountValue = this.amountInput.value;
+        console.log(typeof amountValue);
         if (expenseValue === "" || amountValue === "" || amountValue< 0) {
             this.expenseFeedback.classList.add("showItem");
             this.expenseFeedback.innerHTML = `<p>values cannot be empty or negative</p>`;
@@ -62,8 +63,22 @@ class UI {
                 self.expenseFeedback.classList.remove("showItem");
             }, 4000);
 
+        } else {
+            let amount = parseInt(amountValue);
+            this.expenseAmount = "";
+            this.amountInput = "";
+
+            let expense = {
+                id: this.itemID,
+                title: expenseValue,
+                amount: amount,
+            }
+            this.itemID++;
+            this.itemList.push(expense);
+            this.addExpense();
+            // show balance
         }
-    }
+    } 
 
     // total expense
     totalExpense() {
