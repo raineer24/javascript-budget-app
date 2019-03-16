@@ -141,7 +141,13 @@ class UI {
 
 
     // expense click
-    expenseList.addEventListener('click', function(){});
+    expenseList.addEventListener('click', function(event){
+        if (event.target.parentElement.classList.contains('edit-icon')) {
+            ui.editExpense(event.target.parentElement);
+        } else if (event.target.parentElement.classList.contains('edit-icon')) {
+            ui.deleteExpense(event.target.parentElement);
+        }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function() {
