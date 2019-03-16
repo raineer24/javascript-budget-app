@@ -49,15 +49,30 @@ class UI {
             this.balance.classList.add("showRed");
         }
     }
+
+    // submit expense form method
+    submitExpenseForm() {
+        const expenseValue = this.expenseInput.value;
+        const amountValue = this.amountInput.value;
+        if (expenseValue === "" || amountValue === "" || amountValue< 0) {
+            this.expenseFeedback.classList.add("showItem");
+            this.expenseFeedback.innerHTML = `<p>values cannot be empty or negative</p>`;
+            const self = this;
+            setTimeout(function() {
+                self.expenseFeedback.classList.remove("showItem");
+            }, 4000);
+
+        }
+    }
+
     // total expense
     totalExpense() {
         let total = 400;
         return total;
-        console.log('bogo ka');
-    }
-  }
+      }
+  } // end  class UI
 
-  function eventListeners() {
+  function eventListeners() {    
     const budgetForm = document.getElementById('budget-form');
     const expenseForm = document.getElementById('expense-form');
     const expenseList = document.getElementById('expense-list');
