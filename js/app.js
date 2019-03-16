@@ -29,7 +29,6 @@ class UI {
         } else {
             this.budgetAmount.textContent = value;
             this.budgetInput.value = "";
-            console.log(this.budgetAmount.textContent);
             this.showBalance();
         }
     }
@@ -54,8 +53,7 @@ class UI {
     submitExpenseForm() {
         const expenseValue = this.expenseInput.value;
         const amountValue = this.amountInput.value;
-        console.log(typeof amountValue);
-        if (expenseValue === "" || amountValue === "" || amountValue< 0) {
+          if (expenseValue === "" || amountValue === "" || amountValue< 0) {
             this.expenseFeedback.classList.add("showItem");
             this.expenseFeedback.innerHTML = `<p>values cannot be empty or negative</p>`;
             const self = this;
@@ -74,8 +72,7 @@ class UI {
                 amount: amount,
             }
             this.itemID++;
-            console.log(this.itemList);
-            //this.itemList.push(expense);
+            this.itemList.push(expense);
             this.addExpense(expense);
             this.showBalance();
         }
@@ -102,7 +99,20 @@ class UI {
     }
     // total expense
     totalExpense() {
-        let total = 400;
+        let total = 0;
+        //console.log(this.itemList);
+
+        if (this.itemList.length > 0) {
+            total = this.itemList.reduce(function(acc,curr) {
+                console.log(typeof curr);
+                console.log(`Total is ${acc} and the current value ${curr.amount}`)
+                acc += curr.amount; // return accumulator + currentvalue.amount
+                console.log(`${acc}`);
+                return acc;
+            }, 0);
+            console.log(`${total}`);
+        }
+        this.expenseAmount.textContent = total;
         return total;
       }
   } // end  class UI
