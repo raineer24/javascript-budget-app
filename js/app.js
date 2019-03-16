@@ -34,7 +34,11 @@ class UI {
     }
     //show Balance
     showBalance(){
-        console.log(`hey I'm getting a hold of 'this' keyword`);
+        const expense = this.totalExpense();
+    }
+    // total expense
+    totalExpense() {
+        
     }
   }
 
