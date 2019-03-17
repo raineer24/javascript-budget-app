@@ -49,15 +49,65 @@ class UI {
             this.balance.classList.add("showRed");
         }
     }
+
+    // submit expense form method
+    submitExpenseForm() {
+        const expenseValue = this.expenseInput.value;
+        const amountValue = this.amountInput.value;
+        console.log(typeof amountValue);
+        if (expenseValue === "" || amountValue === "" || amountValue< 0) {
+            this.expenseFeedback.classList.add("showItem");
+            this.expenseFeedback.innerHTML = `<p>values cannot be empty or negative</p>`;
+            const self = this;
+            setTimeout(function() {
+                self.expenseFeedback.classList.remove("showItem");
+            }, 4000);
+
+        } else {
+            let amount = parseInt(amountValue);
+            this.expenseInput.value = "";
+            this.amountInput.value = "";
+
+            let expense = {
+                id: this.itemID,
+                title: expenseValue,
+                amount: amount,
+            }
+            this.itemID++;
+            console.log(this.itemList);
+            //this.itemList.push(expense);
+            this.addExpense(expense);
+            this.showBalance();
+        }
+    } 
+    //add expense
+    addExpense(expense){
+        const div = document.createElement('div');
+        div.classList.add('expense');
+        div.innerHTML = `
+        <div class="expense-item d-flex justify-content-between align-items-baseline">
+        <h6 class="expense-title mb-0 text-uppercase list-item">-  ${expense.title}</h6>
+        <h5 class="expense-amount mb-0 list-item">${expense.amount}</h5>
+        <div class="expense-icons list-item">
+         <a href="#" class="edit-icon mx-2" data-id="${expense.id}">
+          <i class="fas fa-edit"></i>
+         </a>
+         <a href="#" class="delete-icon" data-id="${expense.id}">
+          <i class="fas fa-trash"></i>
+         </a>
+        </div>
+       </div>
+        `;
+       this.expenseList.appendChild(div); 
+    }
     // total expense
     totalExpense() {
         let total = 400;
         return total;
-        console.log('bogo ka');
-    }
-  }
+      }
+  } // end  class UI
 
-  function eventListeners() {
+  function eventListeners() {    
     const budgetForm = document.getElementById('budget-form');
     const expenseForm = document.getElementById('expense-form');
     const expenseList = document.getElementById('expense-list');
@@ -72,9 +122,10 @@ class UI {
         
     });
 
-    //budget form submit
+    //expense form submit
     expenseForm.addEventListener('submit', function(event){
         event.preventDefault();
+        ui.submitExpenseForm(); 
 
     });
 
